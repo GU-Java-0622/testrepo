@@ -6,9 +6,9 @@
 
 	<modules>
 		<module>core-service</module>
-		<module>FrontService</module>
 		<module>auth-service</module>
-	</modules>
+        <module>front-service</module>
+    </modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
