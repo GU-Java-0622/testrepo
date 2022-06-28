@@ -16,11 +16,11 @@ spring:
             allowedHeaders: "*"
       routes:
         - id: core-service
-          url: http://localhost:8181
-         predicates:
-           - Path=/core/**
+          uri: http://localhost:8181
+           predicates:
+          - Path=/core/**
 
         - id: auth-service
-          url: http://localhost:8080
+          uri: http://localhost:8080
           predicates:
             - Path=/auth/**
