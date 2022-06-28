@@ -5,6 +5,7 @@ import {UsersViewComponent} from "./page/users-view/users-view.component";
 import {ProfileViewComponent} from "./page/profile-view/profile-view.component";
 import {FacultiesViewComponent} from "./page/faculties-view/faculties-view.component";
 import {RolesViewComponent} from "./page/roles-view/roles-view.component";
+import {NewsViewComponent} from "./page/news-view/news-view.component";
 
 const dashboardRouting: Routes =[
   {path:'',
@@ -32,7 +33,10 @@ const dashboardRouting: Routes =[
       data:{breadcrumb: 'Факультеты'}},
       {path:'roles',
       component:RolesViewComponent,
-      data:{breadcrumb: 'Роли'}}
+      data:{breadcrumb: 'Роли'}},
+      {path:'news',
+        component:NewsViewComponent,
+        data:{breadcrumb: 'Роли'}}
     ]
   }
   ];

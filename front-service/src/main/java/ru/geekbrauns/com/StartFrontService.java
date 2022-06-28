@@ -1,4 +1,4 @@
-package alex.grizly.com;
+package ru.geekbrauns.com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class StartFrontService {
     public static void main(String[] args) {
-        SpringApplication.run(StartFrontService.class,args);
+        SpringApplication.run(StartFrontService.class, args);
     }
-
 }
