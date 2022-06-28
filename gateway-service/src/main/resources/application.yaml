@@ -17,10 +17,10 @@ spring:
       routes:
         - id: core-service
           url: http://localhost:8181
-        # predicates:
-        #   - Path=/core/**
+         predicates:
+           - Path=/core/**
 
         - id: auth-service
           url: http://localhost:8080
-        #  predicates:
-        #    - Path=/auth/**
+          predicates:
+            - Path=/auth/**
