@@ -1,7 +1,10 @@
+server:
+  port: 8181
+
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;
     username: sa
     password:
   jpa:
@@ -14,3 +17,7 @@ spring:
       enabled: true
       settings:
         web-allow-others: false
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
