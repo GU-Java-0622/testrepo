@@ -1,0 +1,26 @@
+server:
+  port: 5555
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+            allowedHeaders: "*"
+      routes:
+        - id: core-service
+          url: http://localhost:8181
+        # predicates:
+        #   - Path=/core/**
+
+        - id: auth-service
+          url: http://localhost:8080
+        #  predicates:
+        #    - Path=/auth/**
