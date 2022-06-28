@@ -15,7 +15,15 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                  name: username
+                  name: firstname
+                  type: VARCHAR(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: surname
+                  type: VARCHAR(36)
+              - column:
+                  name: lastname
                   type: VARCHAR(36)
               - column:
                   constraints:
@@ -28,6 +36,11 @@ databaseChangeLog:
                     nullable: false
                   name: email
                   type: VARCHAR(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: status
+                  type: VARCHAR(36)
             tableName: users
         - insert:
             tableName: users
@@ -36,14 +49,23 @@ databaseChangeLog:
                   name: id
                   value: "1"
               - column:
-                  name: username
-                  value: "John"
+                  name: firstname
+                  value: "Андрей"
+              - column:
+                  name: surname
+                  value: "Валентинов"
+              - column:
+                  name: lastname
+                  value: "Иванович"
               - column:
                   name: password
                   value: "123"
               - column:
                   name: email
-                  value: "John@john.com"
+                  value: "valentinov@john.com"
+              - column:
+                  name: status
+                  value: "ACTIVE"
         - insert:
             tableName: users
             columns:
@@ -51,11 +73,92 @@ databaseChangeLog:
                   name: id
                   value: "2"
               - column:
-                  name: username
-                  value: "Bob"
+                  name: firstname
+                  value: "Игорь"
+              - column:
+                  name: surname
+                  value: "Иванов"
+              - column:
+                  name: lastname
+                  value: "Иванович"
               - column:
                   name: password
                   value: "123"
               - column:
                   name: email
-                  value: "Bob@bob.com"
+                  value: "ivanov@john.com"
+              - column:
+                  name: status
+                  value: "ACTIVE"
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: "3"
+              - column:
+                  name: firstname
+                  value: "Елена"
+              - column:
+                  name: surname
+                  value: "Дегтярева"
+              - column:
+                  name: lastname
+                  value: "Владимировна"
+              - column:
+                  name: password
+                  value: "123"
+              - column:
+                  name: email
+                  value: "degtyareva@john.com"
+              - column:
+                  name: status
+                  value: "ACTIVE"
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: "4"
+              - column:
+                  name: firstname
+                  value: "Антон"
+              - column:
+                  name: surname
+                  value: "Гринев"
+              - column:
+                  name: lastname
+                  value: "Александрович"
+              - column:
+                  name: password
+                  value: "123"
+              - column:
+                  name: email
+                  value: "grinev@john.com"
+              - column:
+                  name: status
+                  value: "ACTIVE"
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: "5"
+              - column:
+                  name: firstname
+                  value: "Геннадий"
+              - column:
+                  name: surname
+                  value: "Денисов"
+              - column:
+                  name: lastname
+                  value: "Александрович"
+              - column:
+                  name: password
+                  value: "123"
+              - column:
+                  name: email
+                  value: "denisov@john.com"
+              - column:
+                  name: status
+                  value: "ACTIVE"

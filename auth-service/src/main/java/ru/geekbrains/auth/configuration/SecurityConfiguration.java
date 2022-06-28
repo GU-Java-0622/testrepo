@@ -1,4 +1,4 @@
-package ru.geekbrains.auth;
+package ru.geekbrains.auth.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
