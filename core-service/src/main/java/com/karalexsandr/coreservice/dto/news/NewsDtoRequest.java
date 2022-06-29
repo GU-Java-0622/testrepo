@@ -1,24 +1,23 @@
-package com.karalexsandr.coreservice.dto;
+package com.karalexsandr.coreservice.dto.news;
 
-import lombok.ToString;
+import lombok.Data;
 
-import javax.persistence.Column;
-@ToString
-public class NewsDto {
+
+@Data
+public class NewsDtoRequest {
 
     private Long id;
-    private String author;
+    private Long authorId;
     private String title;
     private String content;
 
-    public NewsDto() {
-    }
 
-    public NewsDto(Long id, String author, String title, String content) {
+    public NewsDtoRequest(Long id, Long authorId, String title, String content) {
         this.id = id;
-        this.author = author;
+        this.authorId = authorId;
         this.title = title;
         this.content = content;
+
     }
 
     public Long getId() {
@@ -29,12 +28,12 @@ public class NewsDto {
         this.id = id;
     }
 
-    public String getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
     public String getTitle() {
