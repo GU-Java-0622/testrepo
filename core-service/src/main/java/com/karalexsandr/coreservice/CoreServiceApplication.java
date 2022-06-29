@@ -8,9 +8,6 @@ public class CoreServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CoreServiceApplication.class, args);
-        String message = "HELLO";
-        Hello hello = new Hello();
-        hello.sendMessage(message);
     }
 
 }

@@ -17,7 +17,7 @@ spring:
       routes:
         - id: core-service
           uri: http://localhost:8181
-           predicates:
+          predicates:
           - Path=/core/**
 
         - id: auth-service
