@@ -49,7 +49,11 @@ public class UserServiceImpl implements UserService {
         Specification<User> spec;
         /*Если строка запроа пуста то спецификацию не добавляем*/
         if (param.getSearchValue()!=null){
-            spec= Specification.where(UserSpecification.valueLike(param.getSearchField(), param.getSearchValue()));
+            if(param.getSearchField().equals("id")){
+                spec= Specification.where(UserSpecification.valueLikeLong(param.getSearchField(), Long.parseLong(param.getSearchValue())));
+            }else{
+                spec= Specification.where(UserSpecification.valueLike(param.getSearchField(), param.getSearchValue()));
+            }
         }else{
             spec = Specification.where(null);
         }

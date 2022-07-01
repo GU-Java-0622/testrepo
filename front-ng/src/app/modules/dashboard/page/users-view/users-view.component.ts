@@ -62,6 +62,7 @@ export class UsersViewComponent implements OnInit {
     this.statusSet.add('BANNED');
     this.dataService.getAllUsersPaging(1,this.sizePage,this.selectedFieldValue,this.selectedSortDirection,
       this.selectedFieldSearch,this.searchValue,this.statusSet).subscribe((res: any) => {
+        console.log(res);
       this.usersArray = res.content;
       this.currentPage = res.currentPage;
       this.totalPage = res.totalPage;
@@ -86,7 +87,22 @@ export class UsersViewComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.statusSet.clear()
+    if(this.form.value.checkBoxActiveControl){
+      this.statusSet.add('ACTIVE');
+    }
+    if(this.form.value.checkBoxDeletedControl){
+      this.statusSet.add('DELETED');
+    }
+    if(this.form.value.checkBoxBannedControl){
+      this.statusSet.add('BANNED');
+    }
+    this.dataService.getAllUsersPaging(1,this.sizePage,this.selectedFieldValue,this.selectedSortDirection,
+      this.selectedFieldSearch,this.searchValue,this.statusSet).subscribe((res: any) => {
+      this.usersArray = res.content;
+      this.currentPage = res.currentPage;
+      this.totalPage = res.totalPage;
+    });
   }
 
   getUserById(id:number) {
