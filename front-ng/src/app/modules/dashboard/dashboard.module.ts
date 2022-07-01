@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardViewComponent } from './page/dashboard-view/dashboard-view.component';
 import {DashboardRouting} from "./dashboard-routing";
-import {BreadcrumbComponent} from "../pages/widgets/breadcrumb/breadcrumb.component";
+import {BreadcrumbComponent} from "../welcome_pages/widgets/breadcrumb/breadcrumb.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
@@ -13,6 +13,11 @@ import { RolesViewComponent } from './page/roles-view/roles-view.component';
 import { FacultiesViewComponent } from './page/faculties-view/faculties-view.component';
 import { ProfileViewComponent } from './page/profile-view/profile-view.component';
 import { NewsViewComponent } from './page/news-view/news-view.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 
@@ -24,17 +29,23 @@ import { NewsViewComponent } from './page/news-view/news-view.component';
     RolesViewComponent,
     FacultiesViewComponent,
     ProfileViewComponent,
-    NewsViewComponent
+    NewsViewComponent,
   ],
-  imports: [
-    CommonModule,
-    DashboardRouting,
-    MatSidenavModule,
-    MatIconModule,
-    MatDividerModule,
-    MatButtonModule,
-    MatToolbarModule,
+    imports: [
+        CommonModule,
+        DashboardRouting,
+        MatSidenavModule,
+        MatIconModule,
+        MatDividerModule,
+        MatButtonModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        MatInputModule,
+        MatCheckboxModule,
 
-  ]
+    ]
 })
 export class DashboardModule { }

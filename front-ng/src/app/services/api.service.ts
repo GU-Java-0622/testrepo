@@ -10,11 +10,11 @@ export class ApiService {
   };
    private API_ROOT="http://localhost:5555/"
    private _loginApi = 'auth/api/v1/users/auth';
-   private _register = 'auth/api/v1/users/registration';
-   private _getAllUser ='auth/api/v1/users/get_all';
+   private _user_register = 'auth/api/v1/users/registration';
+   private _getAllUser ='auth/users/get_all';
    private _getProfileById = 'auth/api/v1/users/get_by_id/'
    private _getRolesByUser = 'auth/api/v1/roles/user_roles/'
-   private _updateOrSave= 'auth/api/v1/users/update'
+   private _user_updateOrSave= 'auth/api/v1/users/update'
 
   get getAllUser(): string {
     return this.API_ROOT+this._getAllUser;
@@ -32,8 +32,8 @@ export class ApiService {
     return this.API_ROOT+this._loginApi;
   }
 
-  get register(): string {
-    return this.API_ROOT+this._register;
+  get user_register(): string {
+    return this.API_ROOT+this._user_register;
   }
 
 
@@ -41,7 +41,7 @@ export class ApiService {
     return this.API_ROOT+this._getProfileById;
   }
 
-  get updateOrSave(): string {
-    return this.API_ROOT+this._updateOrSave;
+  get user_updateOrSave(): string {
+    return this.API_ROOT+this._user_updateOrSave;
   }
 }

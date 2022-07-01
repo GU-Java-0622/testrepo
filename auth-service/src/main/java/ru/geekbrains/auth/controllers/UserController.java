@@ -22,7 +22,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/get_all")
+    @PostMapping("/get_all")
     public PaginationEntity<UserGetAllDtoResponse> getAllUsersWithFilters(@RequestBody UserGetAllDtoRequest param) {
         return userService.getAllUsers(param);
     }
