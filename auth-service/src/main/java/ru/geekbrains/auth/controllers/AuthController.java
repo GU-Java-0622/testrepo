@@ -17,7 +17,7 @@ import ru.geekbrains.auth.services.AuthService;
 import javax.security.auth.message.AuthException;
 
 @RestController
-@RequestMapping("api/auth")
+@RequestMapping("api/v1/auth")
 @RequiredArgsConstructor
 @Tag(name = "Сервис авторизации и аутентификации", description = "Методы работы с сервисом авторизации и аутентификации")
 public class AuthController {
