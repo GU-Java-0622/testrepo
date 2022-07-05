@@ -41,11 +41,6 @@ databaseChangeLog:
                     nullable: false
                   name: status
                   type: VARCHAR(36)
-              - column:
-                  constraints:
-                    nullable: false
-                  name: role
-                  type: VARCHAR(36)
             tableName: users
         - createTable:
             columns:
@@ -99,9 +94,7 @@ databaseChangeLog:
               - column:
                   name: status
                   value: "ACTIVE"
-              - column:
-                  name: role
-                  value: "ADMIN"
+
         - insert:
             tableName: users
             columns:
@@ -126,9 +119,7 @@ databaseChangeLog:
               - column:
                   name: status
                   value: "ACTIVE"
-              - column:
-                  name: role
-                  value: "STUDENT"
+
         - insert:
             tableName: users
             columns:
@@ -153,9 +144,7 @@ databaseChangeLog:
               - column:
                   name: status
                   value: "ACTIVE"
-              - column:
-                  name: role
-                  value: "TEACHER"
+
         - insert:
             tableName: users
             columns:
@@ -180,9 +169,7 @@ databaseChangeLog:
               - column:
                   name: status
                   value: "ACTIVE"
-              - column:
-                  name: role
-                  value: "STUDENT"
+
         - insert:
             tableName: users
             columns:
@@ -207,9 +194,7 @@ databaseChangeLog:
               - column:
                   name: status
                   value: "ACTIVE"
-              - column:
-                  name: role
-                  value: "TEACHER"
+
         - insert:
             tableName: roles
             columns:
