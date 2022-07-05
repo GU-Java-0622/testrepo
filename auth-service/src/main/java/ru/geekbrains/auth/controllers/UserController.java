@@ -1,13 +1,11 @@
 package ru.geekbrains.auth.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import ru.geekbrains.auth.entityes.User;
+import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.auth.repositories.UserRepository;
+import ru.geekbrains.auth.entityes.User;
 import ru.geekbrains.auth.services.UserService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,7 +18,6 @@ public class UserController {
         this.userRepository = userRepository;
         this.userService = userService;
     }
-
 
     @GetMapping("/delete")
     public void deleteUser(@RequestParam String username) {
