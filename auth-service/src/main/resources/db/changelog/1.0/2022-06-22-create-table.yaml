@@ -9,7 +9,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                     primaryKey: true
-                    primaryKeyName: user_pkey
+                    primaryKeyName: user_id
                   name: id
                   type: BIGINT
               - column:
@@ -41,7 +41,40 @@ databaseChangeLog:
                     nullable: false
                   name: status
                   type: VARCHAR(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: role
+                  type: VARCHAR(36)
             tableName: users
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: role_id
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(36)
+            tableName: roles
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: role_id
+                  type: VARCHAR(36)
+            tableName: user_roles
         - insert:
             tableName: users
             columns:
@@ -59,13 +92,16 @@ databaseChangeLog:
                   value: "Иванович"
               - column:
                   name: password
-                  value: "123"
+                  value: "1234"
               - column:
                   name: email
                   value: "valentinov@john.com"
               - column:
                   name: status
                   value: "ACTIVE"
+              - column:
+                  name: role
+                  value: "ADMIN"
         - insert:
             tableName: users
             columns:
@@ -90,6 +126,9 @@ databaseChangeLog:
               - column:
                   name: status
                   value: "ACTIVE"
+              - column:
+                  name: role
+                  value: "STUDENT"
         - insert:
             tableName: users
             columns:
@@ -114,6 +153,9 @@ databaseChangeLog:
               - column:
                   name: status
                   value: "ACTIVE"
+              - column:
+                  name: role
+                  value: "TEACHER"
         - insert:
             tableName: users
             columns:
@@ -138,6 +180,9 @@ databaseChangeLog:
               - column:
                   name: status
                   value: "ACTIVE"
+              - column:
+                  name: role
+                  value: "STUDENT"
         - insert:
             tableName: users
             columns:
@@ -162,3 +207,78 @@ databaseChangeLog:
               - column:
                   name: status
                   value: "ACTIVE"
+              - column:
+                  name: role
+                  value: "TEACHER"
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  value: "1"
+              - column:
+                  name: name
+                  value: "ADMIN"
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  value: "2"
+              - column:
+                  name: name
+                  value: "TEACHER"
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  value: "3"
+              - column:
+                  name: name
+                  value: "STUDENT"
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: role_id
+                  value: 1
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: role_id
+                  value: 3
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 3
+              - column:
+                  name: role_id
+                  value: 2
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 4
+              - column:
+                  name: role_id
+                  value: 3
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 5
+              - column:
+                  name: role_id
+                  value: 2

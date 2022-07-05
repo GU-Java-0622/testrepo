@@ -21,6 +21,8 @@ spring:
           - Path=/core/**
 
         - id: auth-service
-          uri: http://localhost:8080
+          uri: http://localhost:8188
           predicates:
             - Path=/auth/**
+#          filters: #ToDo
+#            -
