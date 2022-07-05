@@ -25,12 +25,13 @@ public class SecurityConfiguration {
         return http
                 .httpBasic().disable()
                 .csrf().disable()
+                .headers().frameOptions().disable(). and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests(
                         authz -> authz
                                 .antMatchers("/api/v1/auth/*").permitAll()
-                                .antMatchers("/api/v1/swagger-ui/**", "/api/v1/api-docs/**").permitAll()
+                                .antMatchers("/api/v1/swagger-ui/**", "/api/v1/api-docs/**", "/h2/**").permitAll()
                                 .anyRequest().authenticated()
                                 .and()
                                 .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
