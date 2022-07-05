@@ -17,7 +17,6 @@ public class NewsDtoRequest {
         this.authorId = authorId;
         this.title = title;
         this.content = content;
-
     }
 
     public Long getId() {

@@ -9,18 +9,20 @@ public class UserGetAllDtoResponse {
     private String firstname;
     private String surname;
     private String lastname;
-    private String password;
     private String email;
     private UserStatus status;
     private boolean isEmailVerified =false;
 
-    public UserGetAllDtoResponse(Long id, String firstname, String surname, String lastname, String password, String email) {
+    public UserGetAllDtoResponse() {
+    }
+
+    public UserGetAllDtoResponse(Long id, String firstname, String surname, String lastname, String email, UserStatus status) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
         this.lastname = lastname;
-        this.password = password;
         this.email = email;
+        this.status = status;
     }
     public UserGetAllDtoResponse(User usr) {
         this.id = usr.getId();
@@ -29,6 +31,18 @@ public class UserGetAllDtoResponse {
         this.lastname = usr.getLastname();
         this.email = usr.getEmail();
         this.status = usr.getStatus();
+    }
+
+    public UserStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(UserStatus status) {
+        this.status = status;
+    }
+
+    public void setEmailVerified(boolean emailVerified) {
+        isEmailVerified = emailVerified;
     }
 
     public Long getId() {
@@ -63,13 +77,6 @@ public class UserGetAllDtoResponse {
         this.lastname = lastname;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getEmail() {
         return email;
