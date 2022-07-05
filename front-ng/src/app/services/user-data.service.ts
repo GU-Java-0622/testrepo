@@ -48,7 +48,7 @@ export class UserDataService {
       roles:roles
     }
     console.log(userDetails)
-    return this.http.post<any>(this.api.user_updateOrSave,userDetails);
+    return this.http.post<any>(this.api.updateOrSave,userDetails);
   }
 
 }
