@@ -21,6 +21,7 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         return http
                 .httpBasic().disable()
                 .csrf().disable()
@@ -28,7 +29,8 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests(
                         authz -> authz
-                                .antMatchers("/api/auth/login", "/api/auth/token", "/api-docs", "/swagger-ui").permitAll()
+                                .antMatchers("/api/v1/auth/*").permitAll()
+                                .antMatchers("/api/v1/swagger-ui/**", "/api/v1/api-docs/**").permitAll()
                                 .anyRequest().authenticated()
                                 .and()
                                 .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
