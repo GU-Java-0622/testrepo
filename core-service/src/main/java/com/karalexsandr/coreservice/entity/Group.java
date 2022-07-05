@@ -1,57 +1,46 @@
 package com.karalexsandr.coreservice.entity;
 
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.List;
+import org.hibernate.Hibernate;
 
+import javax.persistence.*;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @RequiredArgsConstructor
 @Table(name = "groups")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "group_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "title")
     private String title;
 
-    @Column(name = "teacher")
-    private Long teacher;
+    @OneToMany
+    @JoinColumn(name = "person_id")
+    private Set<Person> personSet;
 
-    @Column(name = "size_group")
-    private Integer sizeGroup;
+    @OneToOne
+    @JoinColumn(name = "teacher_id")
+    private Person teacher;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Group group = (Group) o;
+        return id != null && Objects.equals(id, group.id);
+    }
 
-    @Column(name = "group_type")
-    @Enumerated(EnumType.STRING)
-    private GroupType type;
-
-    @CreationTimestamp
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    @Column(name = "update_at")
-    private LocalDateTime updateAt;
-
-    @OneToMany(mappedBy = "groupLesson", fetch = FetchType.LAZY)
-    private List<Lesson> lessons;
-
-    @OneToMany(mappedBy = "groupStudent", fetch = FetchType.LAZY)
-    private List<Student> students;
-
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
 }
