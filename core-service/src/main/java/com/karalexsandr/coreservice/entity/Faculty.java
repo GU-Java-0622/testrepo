@@ -4,7 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.time.LocalTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -12,25 +12,29 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table(name = "lessons")
-public class Lesson {
+@Table(name = "faculties")
+public class Faculty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "theme")
-    private String theme;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "duration")
-    private LocalTime duration;
+    @OneToMany
+    private List<Group> groupList;
+
+    @OneToOne
+    @JoinColumn(name = "learning_programme_id")
+    private LearningProgramme learningProgramme;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Lesson lesson = (Lesson) o;
-        return id != null && Objects.equals(id, lesson.id);
+        Faculty faculty = (Faculty) o;
+        return id != null && Objects.equals(id, faculty.id);
     }
 
     @Override
