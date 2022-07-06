@@ -29,7 +29,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: password
-                  type: VARCHAR(36)
+                  type: VARCHAR(100)
               - column:
                   constraints:
                     unique: true
@@ -87,7 +87,7 @@ databaseChangeLog:
                   value: "Иванович"
               - column:
                   name: password
-                  value: "1234"
+                  value: "$2a$10$8DmBmsnyXIBkrXFsXK30KOLR39j4Zq6qnI.0U4Wt1.qYGo3rcMKkC"
               - column:
                   name: email
                   value: "valentinov@john.com"
@@ -112,7 +112,7 @@ databaseChangeLog:
                   value: "Иванович"
               - column:
                   name: password
-                  value: "123"
+                  value: "$2a$10$8DmBmsnyXIBkrXFsXK30KOLR39j4Zq6qnI.0U4Wt1.qYGo3rcMKkC"
               - column:
                   name: email
                   value: "ivanov@john.com"
@@ -137,7 +137,7 @@ databaseChangeLog:
                   value: "Владимировна"
               - column:
                   name: password
-                  value: "123"
+                  value: "$2a$10$8DmBmsnyXIBkrXFsXK30KOLR39j4Zq6qnI.0U4Wt1.qYGo3rcMKkC"
               - column:
                   name: email
                   value: "degtyareva@john.com"
@@ -162,7 +162,7 @@ databaseChangeLog:
                   value: "Александрович"
               - column:
                   name: password
-                  value: "123"
+                  value: "$2a$10$8DmBmsnyXIBkrXFsXK30KOLR39j4Zq6qnI.0U4Wt1.qYGo3rcMKkC"
               - column:
                   name: email
                   value: "grinev@john.com"
