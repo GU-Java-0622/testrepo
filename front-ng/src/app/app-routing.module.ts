@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {WelcomePageComponent} from "./modules/welcome_pages/welcome-page/welcome-page.component";
-import {AboutPageComponent} from "./modules/welcome_pages/about-page/about-page/about-page.component";
+import {WelcomePageComponent} from "./modules/pages/welcome-page/welcome-page.component";
+import {AboutPageComponent} from "./modules/pages/about-page/about-page/about-page.component";
 import {DashboardGuard} from "./guards/dashboard-guard.service";
 
 const routes: Routes = [

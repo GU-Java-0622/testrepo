@@ -21,7 +21,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
     @GetMapping("/delete")
     public void deleteUser(@RequestParam String username) {
         Optional<User> user = userRepository.findByFirstname(username);

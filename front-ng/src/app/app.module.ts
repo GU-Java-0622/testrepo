@@ -3,27 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WelcomePageComponent } from './modules/welcome_pages/welcome-page/welcome-page.component';
-import { HeaderComponent } from './modules/welcome_pages/welcome-page/header/header.component';
-import { MainBannerComponent } from './modules/welcome_pages/welcome-page/main-banner/main-banner.component';
-import { NewsSectionComponent } from './modules/welcome_pages/welcome-page/news-section/news-section.component';
-import { FooterComponent } from './modules/welcome_pages/welcome-page/footer/footer.component';
+import { WelcomePageComponent } from './modules/pages/welcome-page/welcome-page.component';
+import { HeaderComponent } from './modules/pages/welcome-page/header/header.component';
+import { MainBannerComponent } from './modules/pages/welcome-page/main-banner/main-banner.component';
+import { NewsSectionComponent } from './modules/pages/welcome-page/news-section/news-section.component';
+import { FooterComponent } from './modules/pages/welcome-page/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatDialogModule} from '@angular/material/dialog';
-import { LoginDialogComponent } from './modules/welcome_pages/widgets/login-dialog/login-dialog.component';
-import { RegisterationDialogComponent } from './modules/welcome_pages/widgets/registeration-dialog/registeration-dialog.component';
+import { LoginDialogComponent } from './modules/pages/widgets/login-dialog/login-dialog.component';
+import { RegisterationDialogComponent } from './modules/pages/widgets/registeration-dialog/registeration-dialog.component';
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptorService} from "./intercepters/auth-interceptor.service";
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule } from '@angular/common/http';
-import { OauthButtonsComponent } from './modules/welcome_pages/widgets/oauth-buttons/oauth-buttons.component';
-import { AboutPageComponent } from './modules/welcome_pages/about-page/about-page/about-page.component';
-import { AboutContentComponent } from './modules/welcome_pages/about-page/about-page/about-content/about-content.component';
+import { OauthButtonsComponent } from './modules/pages/widgets/oauth-buttons/oauth-buttons.component';
+import { AboutPageComponent } from './modules/pages/about-page/about-page/about-page.component';
+import { AboutContentComponent } from './modules/pages/about-page/about-page/about-content/about-content.component';
 
 @NgModule({
   declarations: [

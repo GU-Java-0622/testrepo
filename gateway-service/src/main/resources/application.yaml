@@ -24,6 +24,5 @@ spring:
           uri: http://localhost:8188
           predicates:
             - Path=/auth/**
-          filters:
-            - StripPrefix=1
-            - PrefixPath=/web-auth
+#          filters: #ToDo
+#            -
