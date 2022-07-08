@@ -12,6 +12,7 @@ databaseChangeLog:
                     primaryKeyName: user_id
                   name: id
                   type: BIGINT
+                  autoIncrement: true
               - column:
                   constraints:
                     nullable: false
@@ -51,6 +52,7 @@ databaseChangeLog:
                     primaryKeyName: role_id
                   name: id
                   type: BIGINT
+                  autoIncrement: true
               - column:
                   constraints:
                     nullable: false
@@ -203,7 +205,7 @@ databaseChangeLog:
                   value: "1"
               - column:
                   name: name
-                  value: "ADMIN"
+                  value: "ROLE_ADMIN"
         - insert:
             tableName: roles
             columns:
@@ -212,7 +214,7 @@ databaseChangeLog:
                   value: "2"
               - column:
                   name: name
-                  value: "TEACHER"
+                  value: "ROLE_TEACHER"
         - insert:
             tableName: roles
             columns:
@@ -221,7 +223,7 @@ databaseChangeLog:
                   value: "3"
               - column:
                   name: name
-                  value: "STUDENT"
+                  value: "ROLE_STUDENT"
         - insert:
             tableName: user_roles
             columns:
