@@ -10,17 +10,18 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.auth.entityes.ERole;
-import ru.geekbrains.auth.entityes.Role;
-import ru.geekbrains.auth.entityes.User;
-import ru.geekbrains.auth.entityes.UserStatus;
+import ru.geekbrains.auth.entityes.*;
+import ru.geekbrains.auth.exceptions.TokenRefreshException;
 import ru.geekbrains.auth.payload.request.LoginRequest;
 import ru.geekbrains.auth.payload.request.SignupRequest;
+import ru.geekbrains.auth.payload.request.TokenRefreshRequest;
 import ru.geekbrains.auth.payload.response.JwtResponse;
 import ru.geekbrains.auth.payload.response.MessageResponse;
+import ru.geekbrains.auth.payload.response.TokenRefreshResponse;
 import ru.geekbrains.auth.repositories.RoleRepository;
 import ru.geekbrains.auth.repositories.UserRepository;
 import ru.geekbrains.auth.security.jwt.JwtUtils;
+import ru.geekbrains.auth.security.services.RefreshTokenService;
 import ru.geekbrains.auth.security.services.UserDetailsImpl;
 
 import javax.security.auth.message.AuthException;
@@ -46,12 +47,15 @@ public class AuthController {
 
     private final JwtUtils jwtUtils;
 
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, JwtUtils jwtUtils) {
+    private final RefreshTokenService refreshTokenService;
+
+    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, JwtUtils jwtUtils, RefreshTokenService refreshTokenService) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.encoder = encoder;
         this.jwtUtils = jwtUtils;
+        this.refreshTokenService = refreshTokenService;
     }
 
 
@@ -70,17 +74,16 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateJwtToken(authentication);
-
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+
+        String jwt = jwtUtils.generateJwtToken(authentication);
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
+        RefreshToken refreshToken = refreshTokenService.createRefreshToken(userDetails.getId());
 
-        return ResponseEntity.ok(new JwtResponse(jwt,
-                userDetails.getId(),
-                userDetails.getEmail(),
-                roles));
+        return ResponseEntity.ok(new JwtResponse(jwt, refreshToken.getToken(), userDetails.getId(),
+                userDetails.getUsername(), userDetails.getEmail(), roles));
     }
 
     @Operation(
@@ -146,35 +149,27 @@ public class AuthController {
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 
-//    @Operation(
-//            summary = "Запрос на получение auth-токена",
-//            responses = {
-//                    @ApiResponse(
-//                            description = "Токен получен", responseCode = "200"
-//                    )
-//            }
-//    )
 
-//    @PostMapping("token")
-//    public ResponseEntity<JwtResponse> getNewAccessToken(@RequestBody RefreshJwtRequest request) throws AuthException {
-//        final JwtResponse token = authService.getAccessToken(request.getRefreshToken());
-//        return ResponseEntity.ok(token);
-//    }
-//
-//    @Operation(
-//            summary = "Запрос на получение auth-токена и refresh-токена",
-//            responses = {
-//                    @ApiResponse(
-//                            description = "Токены получены", responseCode = "200"
-//                    )
-//            }
-//    )
-//
-//    @PostMapping("refresh")
-//    public ResponseEntity<JwtResponse> getNewRefreshToken(@RequestBody RefreshJwtRequest request) throws AuthException {
-//        final JwtResponse token = authService.refresh(request.getRefreshToken());
-//        return ResponseEntity.ok(token);
-//    }
-
+    @Operation(
+            summary = "Запрос на получение access-токена по refresh-токену",
+            responses = {
+                    @ApiResponse(
+                            description = "Токен получен", responseCode = "200"
+                    )
+            }
+    )
+    @PostMapping("/refreshtoken")
+    public ResponseEntity<?> refreshtoken(@Valid @RequestBody TokenRefreshRequest request) {
+        String requestRefreshToken = request.getRefreshToken();
+        return refreshTokenService.findByToken(requestRefreshToken)
+                .map(refreshTokenService::verifyExpiration)
+                .map(RefreshToken::getUser)
+                .map(user -> {
+                    String token = jwtUtils.generateRefeshtokenFromUsername(user.getEmail());
+                    return ResponseEntity.ok(new TokenRefreshResponse(token, requestRefreshToken));
+                })
+                .orElseThrow(() -> new TokenRefreshException(requestRefreshToken,
+                        "Refresh token is not in database!"));
+    }
 
 }

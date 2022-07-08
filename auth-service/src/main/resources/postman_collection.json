@@ -1,22 +1,22 @@
 {
   "info": {
-    "_postman_id": "7be0f05f-b637-4296-a2ab-9ae2e622fa16",
+    "_postman_id": "da0544ae-4da5-4a4e-b2f5-bc0dc4ea4b66",
     "name": "JWT",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "16442716"
+    "_exporter_id": "13740796"
   },
   "item": [
     {
-      "name": "Auth Service",
+      "name": "Auth Service напрямую (без gateway)",
       "item": [
         {
-          "name": "Login User",
+          "name": "Sign Up default (student)",
           "request": {
             "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"login\": \"valentinov@john.com\",\n    \"password\": \"1234\"\n}",
+              "raw": "{\r\n    \"firstname\": \"Борис\",\r\n    \"surname\": \"Борисыч\",\r\n    \"lastname\": \"Борисов\",\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"123456\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -24,14 +24,112 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8181/web-auth/api/auth/login",
+              "raw": "http://localhost:8188/web-auth/api/v1/auth/signup",
               "protocol": "http",
               "host": [
                 "localhost"
               ],
-              "port": "8080",
+              "port": "8188",
               "path": [
+                "web-auth",
                 "api",
+                "v1",
+                "auth",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sign Up admin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstname\": \"Борис\",\r\n    \"surname\": \"Борисыч\",\r\n    \"lastname\": \"Борисов\",\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8188/web-auth/api/v1/auth/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8188",
+              "path": [
+                "web-auth",
+                "api",
+                "v1",
+                "auth",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sign In",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"admin@admin.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8188/web-auth/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8188",
+              "path": [
+                "web-auth",
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Student",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"ivanov@john.com\",\n    \"password\": \"123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8188/web-auth/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8188",
+              "path": [
+                "web-auth",
+                "api",
+                "v1",
                 "auth",
                 "login"
               ]
@@ -46,7 +144,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"login\": \"anton\",\n    \"password\": \"1234\"\n}",
+              "raw": "{\n    \"email\": \"valentinov@john.com\",\n    \"password\": \"1234\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -54,14 +152,16 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/api/auth/login",
+              "raw": "http://localhost:8188/web-auth/api/v1/auth/login",
               "protocol": "http",
               "host": [
                 "localhost"
               ],
-              "port": "8080",
+              "port": "8188",
               "path": [
+                "web-auth",
                 "api",
+                "v1",
                 "auth",
                 "login"
               ]
@@ -76,7 +176,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnRvbiIsImV4cCI6MTY1ODM4NTcwMH0.35Xfw495acquYKcHKK2MrRU_dPlNqPQC7N3-vxA2d0zayWD1Ify6J-xYl5tWkm-8qdyXqPCri3uEfpzx1Lc7WA\"\n}",
+              "raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWxlbnRpbm92QGpvaG4uY29tIiwiZXhwIjoxNjU5NjE3Mzk2fQ.s7cRwgbeKr5oFLKWviReQU-HPiqh7bwzZbe9DESbnUziQeD8eznNZUyPgc6B6_YIrjnRkLODd372MjysQI91_w\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -84,14 +184,16 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/api/auth/token",
+              "raw": "http://localhost:8188/web-auth/api/v1/auth/token",
               "protocol": "http",
               "host": [
                 "localhost"
               ],
-              "port": "8080",
+              "port": "8188",
               "path": [
+                "web-auth",
                 "api",
+                "v1",
                 "auth",
                 "token"
               ]
@@ -107,7 +209,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnRvbiIsImV4cCI6MTY1NTc5NDE2NCwicm9sZXMiOlsiVVNFUiJdLCJmaXJzdE5hbWUiOiLQkNC90YLQvtC9In0.hJ_j6BjysvP2Qv2Lt06m8FwE-U4AHRjVQ9BpBy6fJIycUDZxBSAhoeFucaOGFgukTMfICZbgEvna9OuwqYzzwQ",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWxlbnRpbm92QGpvaG4uY29tIiwiZXhwIjoxNjU3MTEzODkyLCJmaXJzdE5hbWUiOiLQkNC90LTRgNC10LkiLCJlbWFpbCI6InZhbGVudGlub3ZAam9obi5jb20iLCJyb2xlcyI6W3siaWQiOjEsIm5hbWUiOiJBRE1JTiJ9XX0.B5XMCR5FWB-0L61KYyITzfPfx-b4kZZ0cRgVnwHprPEaSaR2O3zV_ZWLvB5qjoBe4DSApf1_aFaMYW6vyB5VUQ",
                   "type": "string"
                 }
               ]
@@ -116,7 +218,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnRvbiIsImV4cCI6MTY1ODM4NTg2NH0.gfE8Gr_1Sp_Um3vXG2EaDgqz6p9iLo1_wZgKksme13pg2q4cXVyShBtMTZ0ApfdcGzXcJ2MUoFHtTJCMj8ROUQ\"\n}",
+              "raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWxlbnRpbm92QGpvaG4uY29tIiwiZXhwIjoxNjU5Njk1MDkyfQ.PuUvldjz5XMTOoBBx3fgl_ofAkTr_EEtIYwJXg9YNpE7a7hG9pWE3t-IqcGkA-zriVM15xHELLfjXmIVI3a5rQ\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -124,14 +226,16 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/api/auth/refresh",
+              "raw": "http://localhost:8188/web-auth/api/v1/auth/refresh",
               "protocol": "http",
               "host": [
                 "localhost"
               ],
-              "port": "8080",
+              "port": "8188",
               "path": [
+                "web-auth",
                 "api",
+                "v1",
                 "auth",
                 "refresh"
               ]
@@ -142,101 +246,148 @@
       ]
     },
     {
-      "name": "Service One",
+      "name": "Через gateway",
       "item": [
         {
-          "name": "Hello User Request",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnRvbiIsImV4cCI6MTY1NTc5NTEyMCwicm9sZXMiOlsiVVNFUiJdLCJmaXJzdE5hbWUiOiLQkNC90YLQvtC9In0.tLFtJ0oPLq493u7EJe2Tb4kLxAFGCYgIWrmMq1XiHNhihbh2sV9-yVQyXOFwIpArw4ReAuUoP-6F2B_6YYzx4Q",
-                  "type": "string"
+          "name": "Auth Service gateway",
+          "item": [
+            {
+              "name": "Login Student",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"ivanov@john.com\",\n    \"password\": \"123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/auth/api/v1/auth/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "auth",
+                    "api",
+                    "v1",
+                    "auth",
+                    "login"
+                  ]
                 }
-              ]
+              },
+              "response": []
             },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
+            {
+              "name": "Login Admin",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5555/auth/api/v1/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "auth",
+                    "api",
+                    "v1",
+                    ""
+                  ]
                 }
-              }
+              },
+              "response": []
             },
-            "url": {
-              "raw": "http://localhost:8080/api/hello/user",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "api",
-                "hello",
-                "user"
-              ]
+            {
+              "name": "Get new access token",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWxlbnRpbm92QGpvaG4uY29tIiwiZXhwIjoxNjU5NjE3Mzk2fQ.s7cRwgbeKr5oFLKWviReQU-HPiqh7bwzZbe9DESbnUziQeD8eznNZUyPgc6B6_YIrjnRkLODd372MjysQI91_w\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/auth/api/v1/auth/token",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "auth",
+                    "api",
+                    "v1",
+                    "auth",
+                    "token"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get new access and refresh tokens",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWxlbnRpbm92QGpvaG4uY29tIiwiZXhwIjoxNjU5NjE3Mzk2fQ.s7cRwgbeKr5oFLKWviReQU-HPiqh7bwzZbe9DESbnUziQeD8eznNZUyPgc6B6_YIrjnRkLODd372MjysQI91_w",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWxlbnRpbm92QGpvaG4uY29tIiwiZXhwIjoxNjU5NjE3Mzk2fQ.s7cRwgbeKr5oFLKWviReQU-HPiqh7bwzZbe9DESbnUziQeD8eznNZUyPgc6B6_YIrjnRkLODd372MjysQI91_w\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5555/auth/api/v1/auth/refresh",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5555",
+                  "path": [
+                    "auth",
+                    "api",
+                    "v1",
+                    "auth",
+                    "refresh"
+                  ]
+                }
+              },
+              "response": []
             }
-          },
-          "response": []
-        },
-        {
-          "name": "Hello Admin Request",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnRvbiIsImV4cCI6MTY1NTc5MzYxNiwicm9sZXMiOlsiVVNFUiJdLCJmaXJzdE5hbWUiOiLQkNC90YLQvtC9In0.2JBqOWBOmO9a93nwiBgFvf6LvATMw-DALRlSwjFbshhu5RP110NIg5Aod_V0r1WtNDAbuzsHFxk7N-chy4sHQg",
-                  "type": "string"
-                }
-              ]
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:8080/api/hello/admin",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "api",
-                "hello",
-                "admin"
-              ]
-            }
-          },
-          "response": []
+          ]
         }
       ]
     },
     {
-      "name": "Service Two",
+      "name": "Service One",
       "item": [
         {
-          "name": "Hello User Request",
+          "name": "Hello Student Request",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -246,7 +397,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpdmFub3ZAam9obi5jb20iLCJleHAiOjE2NTY2OTgzOTgsInJvbGVzIjoiU1RVREVOVCIsImZpcnN0TmFtZSI6ItCY0LPQvtGA0YwifQ.Q8PKVw-wcBeAZ1zEx3UI8op2emCjnmecsQ2Rlfpe31KQVZrbTVryEfome6zqsuaMBuVYnKHUX0w-ZdIj0OHZuA",
                   "type": "string"
                 }
               ]
@@ -263,13 +414,14 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8099/api/hello/user",
+              "raw": "http://localhost:8181/web-auth/api/hello/user",
               "protocol": "http",
               "host": [
                 "localhost"
               ],
-              "port": "8099",
+              "port": "8181",
               "path": [
+                "web-auth",
                 "api",
                 "hello",
                 "user"
@@ -289,7 +441,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnRvbiIsImV4cCI6MTY1NTc1NjQyNSwicm9sZXMiOlsiVVNFUiJdLCJmaXJzdE5hbWUiOiLQkNC90YLQvtC9In0.y40_c0QGAMzf3tq19UtfNHdYcU7KS_xCqzzxBDLeUMZ5ait7LfWbLv8hCHyKGNBHOYLuquu5ylTiNBT4DBgr3A",
+                  "value": "yJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWxlbnRpbm92QGpvaG4uY29tIiwiZXhwIjoxNjU2Njk4NjE5LCJyb2xlcyI6IkFETUlOIiwiZmlyc3ROYW1lIjoi0JDQvdC00YDQtdC5In0.zBBhHfQ492EbraIUxxu4c3_U6HLTD4JRm5lo4Nle2l-NVr12F6FeNBuutu_veiQ6wDqr16QgL6YUjoHtMTm09Q",
                   "type": "string"
                 }
               ]
@@ -306,16 +458,17 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8099/api/hello/user",
+              "raw": "http://localhost:8181/web-auth/api/hello/admin",
               "protocol": "http",
               "host": [
                 "localhost"
               ],
-              "port": "8099",
+              "port": "8181",
               "path": [
+                "web-auth",
                 "api",
                 "hello",
-                "user"
+                "admin"
               ]
             }
           },
