@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.auth.entityes.ERole;
 import ru.geekbrains.auth.entityes.Role;
 import ru.geekbrains.auth.entityes.User;
+import ru.geekbrains.auth.entityes.UserStatus;
 import ru.geekbrains.auth.payload.request.LoginRequest;
 import ru.geekbrains.auth.payload.request.SignupRequest;
 import ru.geekbrains.auth.payload.response.JwtResponse;
@@ -106,8 +107,8 @@ public class AuthController {
         }
 
         // Create new user's account
-        User user = new User(signUpRequest.getFirstname(), signUpRequest.getLastname(), signUpRequest.getSurname(),
-                signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
+        User user = new User(signUpRequest.getFirstname(), signUpRequest.getSurname(), signUpRequest.getLastname(),
+                encoder.encode(signUpRequest.getPassword()), signUpRequest.getEmail(), UserStatus.ACTIVE);
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
