@@ -24,5 +24,10 @@ spring:
           uri: http://localhost:8188
           predicates:
             - Path=/auth/**
-#          filters: #ToDo
-#            -
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/web-auth
+            - JwtAuthFilter
+
+jwt:
+  secret: TXqgStgiwEc16r7M8csn55pFotV0tdp+TzzVATUVn5gTLhT8BAE9kpmc/vVvt3IiirL3lXtj8WA2darXR90Wmg==

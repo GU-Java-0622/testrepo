@@ -53,8 +53,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/v1/auth/login", "/api/v1/auth/token",
-                        "/api/v1/auth/signup", "/api/v1/swagger-ui/**", "/api/v1/api-docs/**", "/h2/**").permitAll()
+                .authorizeRequests().antMatchers("/api/v1/auth/login", "/api/v1/auth/signup",
+                        "/swagger/**", "/api/v1/api-docs/**", "/h2/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
                 .anyRequest().authenticated();
 
