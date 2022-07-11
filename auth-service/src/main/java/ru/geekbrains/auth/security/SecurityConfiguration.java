@@ -61,26 +61,3 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 }
-//
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//
-//        return http
-//                .httpBasic().disable()
-//                .csrf().disable()
-//                .headers().frameOptions().disable().and()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .authenticationProvider(authProvider())
-//                .authorizeHttpRequests(
-//                        authz -> authz
-//                                .antMatchers().permitAll()
-//                                .antMatchers().permitAll()
-//                                .anyRequest().authenticated()
-//                                .and()
-//                                .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-//                )
-//
-//                .build();
-//    }
-
