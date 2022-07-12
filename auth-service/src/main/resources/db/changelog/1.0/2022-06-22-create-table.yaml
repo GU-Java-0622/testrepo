@@ -12,6 +12,7 @@ databaseChangeLog:
                     primaryKeyName: user_id
                   name: id
                   type: BIGINT
+                  autoIncrement: true
               - column:
                   constraints:
                     nullable: false
@@ -29,7 +30,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: password
-                  type: VARCHAR(36)
+                  type: VARCHAR(100)
               - column:
                   constraints:
                     unique: true
@@ -51,6 +52,7 @@ databaseChangeLog:
                     primaryKeyName: role_id
                   name: id
                   type: BIGINT
+                  autoIncrement: true
               - column:
                   constraints:
                     nullable: false
@@ -68,7 +70,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: role_id
-                  type: VARCHAR(36)
+                  type: BIGINT
             tableName: user_roles
         - insert:
             tableName: users
@@ -78,19 +80,19 @@ databaseChangeLog:
                   value: "1"
               - column:
                   name: firstname
-                  value: "Андрей"
+                  value: "Admin"
               - column:
                   name: surname
-                  value: "Валентинов"
+                  value: "Adminov"
               - column:
                   name: lastname
-                  value: "Иванович"
+                  value: "Adminovich"
               - column:
                   name: password
-                  value: "1234"
+                  value: "$2a$10$q7ReXzUuRwPtX9tHB9QrkunSjqFkkVmzeFU7vUa2a4vs6EfPxMfFG"
               - column:
                   name: email
-                  value: "valentinov@john.com"
+                  value: "admin@admin.com"
               - column:
                   name: status
                   value: "ACTIVE"
@@ -103,19 +105,19 @@ databaseChangeLog:
                   value: "2"
               - column:
                   name: firstname
-                  value: "Игорь"
+                  value: "Student"
               - column:
                   name: surname
-                  value: "Иванов"
+                  value: "Studentov"
               - column:
                   name: lastname
-                  value: "Иванович"
+                  value: "Studentovich"
               - column:
                   name: password
-                  value: "123"
+                  value: "$2a$10$q7ReXzUuRwPtX9tHB9QrkunSjqFkkVmzeFU7vUa2a4vs6EfPxMfFG"
               - column:
                   name: email
-                  value: "ivanov@john.com"
+                  value: "student@student.com"
               - column:
                   name: status
                   value: "ACTIVE"
@@ -128,69 +130,19 @@ databaseChangeLog:
                   value: "3"
               - column:
                   name: firstname
-                  value: "Елена"
+                  value: "Teacher"
               - column:
                   name: surname
-                  value: "Дегтярева"
+                  value: "Teacherov"
               - column:
                   name: lastname
-                  value: "Владимировна"
+                  value: "Teacherovich"
               - column:
                   name: password
-                  value: "123"
+                  value: "$2a$10$q7ReXzUuRwPtX9tHB9QrkunSjqFkkVmzeFU7vUa2a4vs6EfPxMfFG"
               - column:
                   name: email
-                  value: "degtyareva@john.com"
-              - column:
-                  name: status
-                  value: "ACTIVE"
-
-        - insert:
-            tableName: users
-            columns:
-              - column:
-                  name: id
-                  value: "4"
-              - column:
-                  name: firstname
-                  value: "Антон"
-              - column:
-                  name: surname
-                  value: "Гринев"
-              - column:
-                  name: lastname
-                  value: "Александрович"
-              - column:
-                  name: password
-                  value: "123"
-              - column:
-                  name: email
-                  value: "grinev@john.com"
-              - column:
-                  name: status
-                  value: "ACTIVE"
-
-        - insert:
-            tableName: users
-            columns:
-              - column:
-                  name: id
-                  value: "5"
-              - column:
-                  name: firstname
-                  value: "Геннадий"
-              - column:
-                  name: surname
-                  value: "Денисов"
-              - column:
-                  name: lastname
-                  value: "Александрович"
-              - column:
-                  name: password
-                  value: "123"
-              - column:
-                  name: email
-                  value: "denisov@john.com"
+                  value: "teacher@teacher.com"
               - column:
                   name: status
                   value: "ACTIVE"
@@ -203,7 +155,7 @@ databaseChangeLog:
                   value: "1"
               - column:
                   name: name
-                  value: "ADMIN"
+                  value: "ROLE_ADMIN"
         - insert:
             tableName: roles
             columns:
@@ -212,7 +164,7 @@ databaseChangeLog:
                   value: "2"
               - column:
                   name: name
-                  value: "TEACHER"
+                  value: "ROLE_TEACHER"
         - insert:
             tableName: roles
             columns:
@@ -221,7 +173,7 @@ databaseChangeLog:
                   value: "3"
               - column:
                   name: name
-                  value: "STUDENT"
+                  value: "ROLE_STUDENT"
         - insert:
             tableName: user_roles
             columns:
@@ -246,24 +198,6 @@ databaseChangeLog:
               - column:
                   name: user_id
                   value: 3
-              - column:
-                  name: role_id
-                  value: 2
-        - insert:
-            tableName: user_roles
-            columns:
-              - column:
-                  name: user_id
-                  value: 4
-              - column:
-                  name: role_id
-                  value: 3
-        - insert:
-            tableName: user_roles
-            columns:
-              - column:
-                  name: user_id
-                  value: 5
               - column:
                   name: role_id
                   value: 2
