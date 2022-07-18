@@ -32,6 +32,8 @@ public final class JwtUtils {
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
         return Jwts.builder()
+                .claim("id", userPrincipal.getId())
+                .claim("role", userPrincipal.getAuthorities())
                 .setSubject((userPrincipal.getEmail()))
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtAccessExpirationMs))
