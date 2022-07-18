@@ -9,6 +9,7 @@
 		<module>auth-service</module>
         <module>front-service</module>
         <module>gateway-service</module>
+        <module>commons</module>
     </modules>
 
 	<parent>

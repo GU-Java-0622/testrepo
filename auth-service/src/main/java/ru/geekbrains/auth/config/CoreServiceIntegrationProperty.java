@@ -1,6 +1,6 @@
-package ru.geekbrains.com.configs;
+package ru.geekbrains.auth.config;
 
-public class AuthServiceIntegrationProperty {
+public class CoreServiceIntegrationProperty {
     private final String authServiceUrl="http://localhost:5555/auth";
     private final Long readTimeout= 2000L;
     private final Long writeTimeout = 2000L;
