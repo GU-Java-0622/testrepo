@@ -1,4 +1,4 @@
-package ru.geekbrains.com.configs;
+package ru.geekbrains.auth.config;
 
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
@@ -13,8 +13,8 @@ import reactor.netty.tcp.TcpClient;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
-public class AuthIntegrationConfig {
-    AuthServiceIntegrationProperty property = new AuthServiceIntegrationProperty();
+public class CoreIntegrationConfig {
+    CoreServiceIntegrationProperty property = new CoreServiceIntegrationProperty();
 
     @Bean
     public WebClient authServiceWebClient(){
